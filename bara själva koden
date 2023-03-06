@@ -1,0 +1,102 @@
+class Contact( var name: String, var lastname: String, var phonenumber: Int, var mailAdress: String)
+
+class ContactList()
+{
+    var contacts = mutableListOf<Contact>()
+    fun AddContact(name: String, lastname: String, phonenumber: Int, mailAdress: String)
+    {
+        contacts.add(Contact(name, lastname, phonenumber, mailAdress))
+    }
+
+    fun PrintAllContacts()
+    {
+        for (x in contacts) {
+            println("${x.name} ${x.lastname} ${x.phonenumber} ${x.mailAdress}")
+        }
+    }
+
+    fun RemoveContact()
+    {
+        println("enter index of the contact you want to remove:")
+        PrintAllContacts()
+        val index = readln().toInt()
+        contacts.removeAt(index)
+    }
+
+}
+
+fun main() {
+
+    val myContacts = ContactList()
+    myContacts.AddContact("Hasse", "Ravelli", 1444567, "Hasse.ravelli@hejpådig.com")
+    myContacts.AddContact("Kappesch", "Schröder", 1234567, "Kappe.Schröder@hejpådig.com")
+    myContacts.AddContact("Viktor", "Larsson", 1226789, "Viktor.Larsson@hejpådig.com")
+
+/*
+    myContacts.RemoveContact()
+        myContacts.PrintAllContacts()
+*/
+
+    while (true)
+    {
+        println("MENU what would you like to do  1 = Add Contact | 2 = Remove contact | 3 = Edit contact")
+        var i : Int = readln().toInt()
+
+        if(i==1)
+        {
+            var name: String
+            var lastname: String
+            var phonenumber: Int
+            var mailAdress: String
+
+            println("Please write in the name of the person you would like to add:")
+            val Name = readln()
+
+            println("what is the lastname of the person?")
+            val LastName = readln()
+
+            println("Whats is the phonenumber of the person")
+            val PhoneNumber = readln().toInt()
+
+            println("Write in the email of the person you would like to add:")
+            val MailAdress = readln()
+
+            myContacts.AddContact(Name,LastName,PhoneNumber, MailAdress)
+            myContacts.PrintAllContacts()
+
+        }
+
+
+        if(i==2)
+        {
+            myContacts.RemoveContact()
+        }
+
+        if(i==3)
+        {
+            println("Which contact would you like to edit")
+            myContacts.PrintAllContacts()
+            var index = readln().toInt()
+
+            println("Write the new name:")
+            val NewName = readln()
+
+            println("Write the new lastname:")
+            val NewLastName = readln()
+
+            println("write the new phonenumber:")
+            val NewPhoneNumber = readln()
+
+            println("Write in the new MailAdress:")
+            val NewMailAdress = readln()
+
+           // contacts.set(Contact(index, NewName, NewLastName, NewPhoneNumber, NewMailAdress))
+
+
+
+        }
+
+    }
+
+}
+
